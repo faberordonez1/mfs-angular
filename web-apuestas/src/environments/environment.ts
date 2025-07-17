@@ -4,9 +4,6 @@
 
 export const environment = {
   production: false,
-  name: 'local',
-  apiUrl: 'http://localhost:3002',
-  version: '1.0.0',
   homeUrl: 'http://localhost:4200',
   recargasUrl: 'http://localhost:4201'
 };

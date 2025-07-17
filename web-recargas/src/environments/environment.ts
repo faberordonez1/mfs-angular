@@ -4,9 +4,6 @@
 
 export const environment = {
   production: false,
-  name: 'local',
-  apiUrl: 'http://localhost:3001',
-  version: '1.0.0',
   homeUrl: 'http://localhost:4200',
   apuestasUrl: 'http://localhost:4202'
 };
