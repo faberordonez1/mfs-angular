@@ -1,6 +1,5 @@
 export const environment = {
   production: true,
-  name: 'production',
-  apiUrl: 'https://api.production.com',
-  version: '1.0.0'
+  recargasUrl: 'https://recargas.production.com',
+  apuestasUrl: 'https://apuestas.production.com'
 };
