@@ -126,9 +126,80 @@ echo '{
 cd ..
 ```
 
-## Próximos pasos
-- Instalar dependencias comunes necesarias
-- Configurar ambientes (dev, qa, prod)
+### 7. Configuración de Puertos y Environments
+Se configuraron los puertos y environments para permitir la comunicación entre los tres proyectos:
+
+#### Configuración de Puertos
+Cada proyecto se ejecuta en un puerto diferente:
+- web-home: Puerto 4200
+- web-recargas: Puerto 4201
+- web-apuestas: Puerto 4202
+
+#### Configuración de Environments
+Cada proyecto tiene configurado su ambiente local y de producción con las URLs necesarias para comunicarse con los otros proyectos:
+
+##### Web-Home (Puerto 4200)
+```typescript
+// environment.ts (local)
+export const environment = {
+  production: false,
+  recargasUrl: 'http://localhost:4201',
+  apuestasUrl: 'http://localhost:4202'
+};
+
+// environment.prod.ts
+export const environment = {
+  production: true,
+  recargasUrl: 'https://recargas.production.com',
+  apuestasUrl: 'https://apuestas.production.com'
+};
+```
+
+##### Web-Recargas (Puerto 4201)
+```typescript
+// environment.ts (local)
+export const environment = {
+  production: false,
+  homeUrl: 'http://localhost:4200',
+  apuestasUrl: 'http://localhost:4202'
+};
+
+// environment.prod.ts
+export const environment = {
+  production: true,
+  homeUrl: 'https://home.production.com',
+  apuestasUrl: 'https://apuestas.production.com'
+};
+```
+
+##### Web-Apuestas (Puerto 4202)
+```typescript
+// environment.ts (local)
+export const environment = {
+  production: false,
+  homeUrl: 'http://localhost:4200',
+  recargasUrl: 'http://localhost:4201'
+};
+
+// environment.prod.ts
+export const environment = {
+  production: true,
+  homeUrl: 'https://home.production.com',
+  recargasUrl: 'https://recargas.production.com'
+};
+```
+
+Para ejecutar los proyectos simultáneamente:
+```bash
+# Terminal 1
+cd web-home && ng serve
+
+# Terminal 2
+cd web-recargas && ng serve
+
+# Terminal 3
+cd web-apuestas && ng serve
+```
 
 ## Nota
 Este documento se irá actualizando conforme se vayan ejecutando más comandos en el proyecto.
