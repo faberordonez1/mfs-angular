@@ -9,21 +9,12 @@ import { environment } from '../environments/environment';
 export class AppComponent {
   title = 'web-home';
 
-  crear() {
-    // Lógica para crear un nuevo elemento
-    console.log('Crear nuevo elemento');
-    var nuevoElemento = {
-      id: Date.now(),
-      nombre: 'Nuevo Elemento'
-    };
-    console.log(nuevoElemento);
-  }
+  goTo(keyEnv: 'homeUrl' | 'recargasUrl' | 'apuestasUrl') {
+    let urlDestino = environment[keyEnv];
+    let urlActual = window.location.href;
 
-  goToRecargas() {
-    window.location.href = environment.recargasUrl;
-  }
+    if (urlDestino === urlActual) return;
 
-  goToApuestas() {
-    window.location.href = environment.apuestasUrl;
+    window.location.href = urlDestino;
   }
 }

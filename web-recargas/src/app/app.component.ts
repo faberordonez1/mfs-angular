@@ -9,11 +9,12 @@ import { environment } from '../environments/environment';
 export class AppComponent {
   title = 'web-recargas';
 
-  goToHome() {
-    window.location.href = environment.homeUrl;
-  }
+  goTo(keyEnv: 'homeUrl' | 'recargasUrl' | 'apuestasUrl') {
+    let urlDestino = environment[keyEnv];
+    let urlActual = window.location.href;
 
-  goToApuestas() {
-    window.location.href = environment.apuestasUrl;
+    if (urlDestino === urlActual) return;
+
+    window.location.href = urlDestino;
   }
 }
