@@ -58,8 +58,75 @@ Se ha verificado que todos los proyectos están en Angular 13:
 - web-recargas: Angular 13.3.0
 - web-apuestas: Angular 13.3.0
 
+### 5. Configuración de Git
+Se realizó un commit inicial que incluye los tres proyectos en el repositorio principal.
+
+### 6. Instalación de dependencias comunes
+Instalaremos las siguientes dependencias en cada proyecto:
+- Angular Material para componentes de UI
+- ESLint para análisis de código
+- Prettier para formateo de código
+
+```bash
+# Para web-home
+cd web-home
+# Instalando Angular Material
+ng add @angular/material
+
+# Instalando ESLint
+ng add @angular-eslint/schematics
+npm install --save-dev prettier prettier-eslint eslint-config-prettier eslint-plugin-prettier
+
+# Creando archivos de configuración
+echo '{
+  "semi": true,
+  "trailingComma": "none",
+  "singleQuote": true,
+  "printWidth": 80
+}' > .prettierrc
+
+cd ..
+
+# Para web-recargas
+cd web-recargas
+# Instalando Angular Material
+ng add @angular/material
+
+# Instalando ESLint
+ng add @angular-eslint/schematics
+npm install --save-dev prettier prettier-eslint eslint-config-prettier eslint-plugin-prettier
+
+# Creando archivos de configuración
+echo '{
+  "semi": true,
+  "trailingComma": "none",
+  "singleQuote": true,
+  "printWidth": 80
+}' > .prettierrc
+
+cd ..
+
+# Para web-apuestas
+cd web-apuestas
+# Instalando Angular Material
+ng add @angular/material
+
+# Instalando ESLint
+ng add @angular-eslint/schematics
+npm install --save-dev prettier prettier-eslint eslint-config-prettier eslint-plugin-prettier
+
+# Creando archivos de configuración
+echo '{
+  "semi": true,
+  "trailingComma": "none",
+  "singleQuote": true,
+  "printWidth": 80
+}' > .prettierrc
+
+cd ..
+```
+
 ## Próximos pasos
-- Configurar Git para cada proyecto
 - Instalar dependencias comunes necesarias
 - Configurar ambientes (dev, qa, prod)
 
