@@ -136,58 +136,25 @@ Cada proyecto se ejecuta en un puerto diferente:
 - web-apuestas: Puerto 4202
 
 #### Configuración de Environments
-Cada proyecto tiene configurado su ambiente local y de producción con las URLs necesarias para comunicarse con los otros proyectos:
 
-##### Web-Home (Puerto 4200)
+Los tres proyectos comparten la misma configuración de environments para facilitar la comunicación entre ellos.
+Cada proyecto tiene configurados los siguientes valores en su archivo `environment.ts`:
+
 ```typescript
-// environment.ts (local)
 export const environment = {
   production: false,
+  homeUrl: 'http://localhost:4200',
   recargasUrl: 'http://localhost:4201',
   apuestasUrl: 'http://localhost:4202'
 };
-
-// environment.prod.ts
-export const environment = {
-  production: true,
-  recargasUrl: 'https://recargas.production.com',
-  apuestasUrl: 'https://apuestas.production.com'
-};
 ```
 
-##### Web-Recargas (Puerto 4201)
-```typescript
-// environment.ts (local)
-export const environment = {
-  production: false,
-  homeUrl: 'http://localhost:4200',
-  apuestasUrl: 'http://localhost:4202'
-};
+Esta configuración permite:
+- web-home corre en el puerto 4200
+- web-recargas corre en el puerto 4201
+- web-apuestas corre en el puerto 4202
 
-// environment.prod.ts
-export const environment = {
-  production: true,
-  homeUrl: 'https://home.production.com',
-  apuestasUrl: 'https://apuestas.production.com'
-};
-```
-
-##### Web-Apuestas (Puerto 4202)
-```typescript
-// environment.ts (local)
-export const environment = {
-  production: false,
-  homeUrl: 'http://localhost:4200',
-  recargasUrl: 'http://localhost:4201'
-};
-
-// environment.prod.ts
-export const environment = {
-  production: true,
-  homeUrl: 'https://home.production.com',
-  recargasUrl: 'https://recargas.production.com'
-};
-```
+Cada proyecto puede navegar a los otros utilizando las URLs definidas en su environment.
 
 Para ejecutar los proyectos simultáneamente:
 ```bash
@@ -199,6 +166,24 @@ cd web-recargas && ng serve
 
 # Terminal 3
 cd web-apuestas && ng serve
+```
+
+### Environments de Producción
+
+Cada proyecto también tiene configurado su archivo `environment.prod.ts` con las URLs de producción:
+
+```typescript
+export const environment = {
+  production: true,
+  homeUrl: 'https://home.production.com',
+  recargasUrl: 'https://recargas.production.com',
+  apuestasUrl: 'https://apuestas.production.com'
+};
+```
+
+Esta configuración se utilizará cuando se compile el proyecto en modo producción usando:
+```bash
+ng build --configuration production
 ```
 
 ## Nota

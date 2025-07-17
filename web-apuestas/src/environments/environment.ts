@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   homeUrl: 'http://localhost:4200',
-  recargasUrl: 'http://localhost:4201'
+  recargasUrl: 'http://localhost:4201',
+  apuestasUrl: 'http://localhost:4202'
 };
 
 /*
