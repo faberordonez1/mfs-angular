@@ -1,11 +1,15 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<mat-toolbar color="primary">
+  <span>Recargas</span>
+</mat-toolbar>
+
+<div class="container">
+  <h1>Sistema de Recargas</h1>
+  <div class="navigation-buttons">
+    <button mat-raised-button color="accent" (click)="goToHome()">Volver a Home</button>
+    <button mat-raised-button color="warn" (click)="goToApuestas()">Ir a Apuestas</button>
+  </div>
+  <router-outlet></router-outlet>
+</div>
 
 <style>
   :host {
