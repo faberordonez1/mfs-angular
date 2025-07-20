@@ -31,6 +31,29 @@ El shell (`web-home`) debe cargar los remotos usando rutas lazy y el mecanismo d
 
 El menú de navegación debe usar el router de Angular para evitar recargar toda la página y solo actualizar el contenido central.
 
+## 6. Configuración de webpack para Module Federation
+
+Se editaron los archivos `webpack.config.js` de cada proyecto:
+
+- **web-home**: configurado como shell (host), define los remotos `web-apuestas` y `web-recargas`.
+- **web-apuestas**: configurado como remoto, expone el módulo `ApuestasModule`.
+- **web-recargas**: configurado como remoto, expone el módulo `RecargasModule`.
+
+Esto permite que el shell cargue los módulos de los remotos dinámicamente mediante Module Federation.
+
+## 7. Configuración de rutas y navegación en el shell (web-home)
+
+- Se agregaron rutas lazy en `app-routing.module.ts` para cargar los módulos remotos `RecargasModule` y `ApuestasModule` usando Module Federation.
+- El menú de navegación en `app.component.html` fue actualizado para usar `routerLink` en vez de redirecciones de URL, permitiendo navegación sin recargar la página.
+- Se eliminó la función `goTo` del componente principal, ya que la navegación ahora es gestionada por Angular Router.
+
+Esto permite que el contenido de los remotos se cargue dinámicamente en el `<router-outlet>` del shell, manteniendo la experiencia SPA.
+
+## 8. Corrección de configuración de webpack en Angular 13
+
+- Se corrigió la configuración de `webpack.config.js` en el shell (`web-home`) para usar `ModuleFederationPlugin` directamente, evitando el error `mf.withModuleFederationPlugin is not a function`.
+- Esta es la forma recomendada y estable para Angular 13.
+
 ---
 
 Este documento se irá actualizando conforme se realicen más pasos en la migración a Module Federation.
