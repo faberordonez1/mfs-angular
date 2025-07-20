@@ -7,8 +7,6 @@ import { environment } from '../environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'web-recargas';
-
   goTo(keyEnv: 'homeUrl' | 'recargasUrl' | 'apuestasUrl') {
     let urlDestino = environment[keyEnv];
     let urlActual = window.location.href;
