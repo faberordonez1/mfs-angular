@@ -1,6 +1,6 @@
 <nav>
-  <button routerLink="/">Home</button>
-  <button routerLink="/recargas">Recargas</button>
-  <button routerLink="/apuestas">Apuestas</button>
+  <button (click)="toLink('/')">Home</button>
+  <button (click)="toLink('/recargas')">Recargas</button>
+  <button (click)="toLink('/apuestas')">Apuestas</button>
 </nav>
 <router-outlet></router-outlet>

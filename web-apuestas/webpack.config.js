@@ -19,18 +19,18 @@ module.exports = {
       },
       shared: {
         '@angular/core': {
-          singleton: true,
-          strictVersion: true,
+          singleton: false,
+          strictVersion: false,
           requiredVersion: 'auto'
         },
         '@angular/common': {
-          singleton: true,
-          strictVersion: true,
+          singleton: false,
+          strictVersion: false,
           requiredVersion: 'auto'
         },
         '@angular/router': {
-          singleton: true,
-          strictVersion: true,
+          singleton: false,
+          strictVersion: false,
           requiredVersion: 'auto'
         }
 
