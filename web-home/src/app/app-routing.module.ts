@@ -10,22 +10,19 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule)
+  },
+  {
+    path: 'recargas',
+    loadChildren: () =>
+      // @ts-ignore
+      import('web_recargas/RecargasModule').then((m) => m.RecargasModule)
+  },
+  {
+    path: 'apuestas',
+    loadChildren: () =>
+      // @ts-ignore
+      import('web_apuestas/ApuestasModule').then((m) => m.ApuestasModule)
   }
-  // {
-  //   path: 'recargas',
-  //   loadChildren: () =>
-  //     // @ts-ignore
-  //     import('web_recargas/RecargasModule').then((m) => {
-  //       debugger;
-  //       m.RecargasModule;
-  //     })
-  // },
-  // {
-  //   path: 'apuestas',
-  //   loadChildren: () =>
-  //     // @ts-ignore
-  //     import('web_apuestas/ApuestasModule').then((m) => m.ApuestasModule)
-  // }
 ];
 
 @NgModule({
