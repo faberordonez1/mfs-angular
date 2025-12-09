@@ -3,7 +3,7 @@ import { RouterOutlet, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink], //Requiere el RouterLink para los redireccionamientos
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
