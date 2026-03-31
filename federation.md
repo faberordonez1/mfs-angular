@@ -54,6 +54,25 @@ Esto permite que el contenido de los remotos se cargue dinámicamente en el `<ro
 - Se corrigió la configuración de `webpack.config.js` en el shell (`web-home`) para usar `ModuleFederationPlugin` directamente, evitando el error `mf.withModuleFederationPlugin is not a function`.
 - Esta es la forma recomendada y estable para Angular 13.
 
+## 9. Despliegue a Producción (WAF / Proxy Inverso)
+
+> [!IMPORTANT]
+> **Redireccionamiento para recargas de navegador (Fallback)**
+> Es vital configurar el servidor web o WAF (ej. Apache) para que ceda el control de las rutas al router de Angular (Host). Si un usuario recarga la página manualmente (`F5`) estando en una ruta como `https://midominio.com/recargas`, Apache intentará buscar un directorio real llamado "recargas" y arrojará un **Error 404**.
+> 
+> Para solucionar esto, es obligatorio configurar un *Fallback* hacia el `index.html` de `web-home` cuando el recurso o archivo solicitado no exista físicamente:
+> ```apache
+> <Directory "/ruta/a/los/archivos/de/web-home">
+>     RewriteEngine On
+>     RewriteCond %{REQUEST_FILENAME} !-f
+>     RewriteCond %{REQUEST_FILENAME} !-d
+>     RewriteRule ^ index.html [L]
+> </Directory>
+> ```
+> **Recomendaciones adicionales:**
+> - Mantener siempre el `<base href="/">` en el `index.html` del host (`web-home`).
+> - Asegurarse de que el WAF use una ruta distinta para descargar el microfrontend (ej. `/web-recargas/remoteEntry.js`) vs la ruta que el usuario ve en el navegador (`/recargas`) para evitar bucles o colisiones en la resolución de Angular.
+
 ---
 
 Este documento se irá actualizando conforme se realicen más pasos en la migración a Module Federation.
