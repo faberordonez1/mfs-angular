@@ -8,7 +8,5 @@ import { Component, OnInit } from '@angular/core';
 export class ContComponent implements OnInit {
   constructor() {}
 
-  ngOnInit(): void {
-    debugger;
-  }
+  ngOnInit(): void {}
 }
