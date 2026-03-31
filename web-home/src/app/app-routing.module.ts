@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MnComponent } from './mn/mn.component';
+import { loadRemoteModule } from '@angular-architects/module-federation';
 
 const routes: Routes = [
   {
@@ -14,14 +15,20 @@ const routes: Routes = [
   {
     path: 'recargas',
     loadChildren: () =>
-      // @ts-ignore
-      import('web_recargas/RecargasModule').then((m) => m.RecargasModule)
+      loadRemoteModule({
+        remoteEntry: 'http://localhost:4201/remoteEntry.js',
+        remoteName: 'web_recargas',
+        exposedModule: './RecargasModule'
+      }).then((m) => m.RecargasModule)
   },
   {
     path: 'apuestas',
     loadChildren: () =>
-      // @ts-ignore
-      import('web_apuestas/ApuestasModule').then((m) => m.ApuestasModule)
+      loadRemoteModule({
+        remoteEntry: 'http://localhost:4202/remoteEntry.js',
+        remoteName: 'web_apuestas',
+        exposedModule: './ApuestasModule'
+      }).then((m) => m.ApuestasModule)
   }
 ];
 
